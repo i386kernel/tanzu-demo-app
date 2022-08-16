@@ -20,7 +20,7 @@ spec:
           image: index.docker.io/irisdev21/customerportal:v1
           env:
             - name: SE_SERVICE_URL
-              value: http://seservice:8080/se-service
+              value: http://seservice:8080/
           ports:
             - containerPort: 8080
 ---
