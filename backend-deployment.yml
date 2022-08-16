@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: seservice
+  labels:
+    app: seservice
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: seservice
+      labels:
+        app: seservice
+    spec:
+      containers:
+        - name: seservice
+          image: index.docker.io/irisdev21/seservice:v1
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: seservice

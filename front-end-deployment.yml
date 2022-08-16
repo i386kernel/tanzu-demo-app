@@ -1,0 +1,38 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: customerportal
+  labels:
+    app: customerportal
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: customerportal
+  template:
+    metadata:
+      labels:
+        app: customerportal
+    spec:
+      containers:
+        - name: customerportal
+          image: index.docker.io/irisdev21/customerportal:v1
+          env:
+            - name: SE_SERVICE_URL
+              value: http://seservice:8080/se-service
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: customerportal
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 8080
+      protocol: TCP
+  selector:
+    app: customerportal
+---
