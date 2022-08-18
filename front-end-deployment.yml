@@ -18,9 +18,10 @@ spec:
       containers:
         - name: customerportal
           image: index.docker.io/irisdev21/customerportal:v1
+          imagePullPolicy: Always
           env:
             - name: SE_SERVICE_URL
-              value: http://seservice:8080/
+              value: http://seservice:8080/se-service/
           ports:
             - containerPort: 8080
 ---

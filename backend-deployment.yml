@@ -15,7 +15,7 @@ spec:
       containers:
         - name: seservice
           image: index.docker.io/irisdev21/seservice:v1
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
       restartPolicy: Always
