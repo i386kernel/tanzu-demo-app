@@ -11,6 +11,10 @@ spec:
       name: seservice
       labels:
         app: seservice
+      annotations:
+        prometheus.io/scrape: 'true'
+        prometheus.io/port: '8080'
+        prometheus.io/path: '/se-service/actuator/prometheus'
     spec:
       containers:
         - name: seservice
@@ -22,7 +26,6 @@ spec:
   selector:
     matchLabels:
       app: seservice
-
 ---
 apiVersion: v1
 kind: Service
@@ -35,3 +38,4 @@ spec:
     - port: 8080
       targetPort: 8080
   type: ClusterIP
+---
